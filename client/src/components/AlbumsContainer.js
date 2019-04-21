@@ -42,6 +42,7 @@ class AlbumsContainer extends React.Component {
         <div className='ui active centered inline loader' />
       )
     } else {
+      const matchPath = this.props.match.path;
       return (
         <div className='ui two column divided grid'>
           <div
@@ -50,11 +51,12 @@ class AlbumsContainer extends React.Component {
           >
             <VerticalMenu
               albums={this.state.albums}
+              albumsPathname={matchPath}
             />
           </div>
           <div className='ui ten wide column'>
             <Route
-              path='/albums/:albumId'
+              path={`${matchPath}/:albumId`}
               render={({ match }) => {
                 const album = this.state.albums.find(
                   (album) => album.id === match.params.albumId
@@ -62,6 +64,7 @@ class AlbumsContainer extends React.Component {
                 return (
                   <Album
                     album={album}
+                    albumsPathname={matchPath}
                   />
                 );
               }}
