@@ -1,15 +1,19 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>
-          Test
-        </h1>
-      </div>
-    );
-  }
-}
+import TopBar from './components/TopBar';
+import AlbumsContainer from './components/AlbumsContainer';
+
+import './styles/App.css';
+
+const App = () => (
+  <div className='ui grid'>
+    <TopBar />
+    <div className='spacer row' />
+    <div className='row'>
+      <Route path='/albums' component={AlbumsContainer}/>
+    </div>
+  </div>
+)
 
 export default App;
