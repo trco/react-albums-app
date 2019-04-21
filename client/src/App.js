@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import TopBar from './components/TopBar';
 import AlbumsContainer from './components/AlbumsContainer';
@@ -12,6 +12,11 @@ const App = () => (
     <div className='spacer row' />
     <div className='row'>
       <Route path='/albums' component={AlbumsContainer}/>
+      <Route exact path='/' render={() => (
+        <Redirect
+          to='/albums'
+        />
+      )} />
     </div>
   </div>
 )
